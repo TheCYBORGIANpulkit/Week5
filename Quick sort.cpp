@@ -15,44 +15,45 @@ void Swap(int i, int j, int *arr){
 int Partition(int *arr,int low,int high){
     //taking pivot to be the last element of the array
     int pi = arr[high];
-    int i= low;
-    //check if the element is lesser  than pivot SWAP
-    while(i<high;){
+    int j = (low-1);
 
-        if(arr[i+1]< pi){
-            Swap(i+1,i+2,arr);
-            i++;
-        }
+    //check if the element is lesser  than pivot SWAP
+   for(int i=low;i<high;i++){
+
+
+                 if(arr[i]<= pi){
+                    Swap(j,i,arr);
+                    j++;
+                 }
     }
-    /*
-    int i=0;
-    while(arr[i]<= pi){
-        i++;
-       return i+1;
-    }
-    Swap(i+1,pi,arr);
-    */
-    for(int i=0;i<6;i++){
-        cout<<arr[i]<<" ";
-    }
+    Swap(j+1,high,arr);
+    return j+1;
+
+
 }
 
 
 void Quicksort(int *arr,int low,int high){
     //m,k
-/*
+
     if(low<high){
         int pi = Partition(arr,low,high);
         Quicksort(arr,low,pi-1);
         Quicksort(arr,pi+1,high);
     }
-    */
+}
+
+void printarray(int *arr){
+    for(int i=0;i<6;i++){
+        cout<< arr[i] <<" " ;
+    }
 
 }
 
+
 int main(){
 
-    int arr[] = {3, 4, 6, 2, 1,5};
+    int arr[6] = {3, 4, 6, 2, 1,5};
     // declaring the pivot and low and high;
      for(int i=0;i<6;i++){
         cout<<arr[i]<<" ";
@@ -62,7 +63,8 @@ int main(){
     int low = 0;
 
     cout<< "The sorted array is :" <<endl;
-    Partition(arr,low,high);
+     Quicksort(arr,low,high);
+    printarray(arr);
 
     return 0;
 }
